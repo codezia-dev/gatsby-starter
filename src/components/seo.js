@@ -17,7 +17,9 @@ function Seo({ description, title, children }) {
           siteMetadata {
             title
             description
+            siteUrl
             author
+            image
           }
         }
       }
@@ -31,13 +33,21 @@ function Seo({ description, title, children }) {
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
       <meta name="description" content={metaDescription} />
+      <meta name="image" content={site.siteMetadata?.image} />
       <meta property="og:title" content={title} />
+      <meta property="og:url" content={site.siteMetadata?.siteUrl} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
+      <meta property="og:image" content={site.siteMetadata?.image} />
+
+
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:url" content={site.siteMetadata?.siteUrl} />
+      <meta name="twitter:image" content={site.siteMetadata?.image} />
+
       {children}
     </>
   )
